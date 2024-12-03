@@ -1,7 +1,7 @@
 export default {
   "index": "Introduction",
   "another": "Another Page",
-  "advanced": "Advanced (A Folder)",
+  "components": "Components",
   "about": {
     "title": "About",
     "type": "page"
