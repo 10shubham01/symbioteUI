@@ -48,7 +48,7 @@ export default async function handler(
         return;
       }
 
-      const githubUrl = `https://api.github.com/repos/${githubRepo}/contents/components${componentPath}`;
+      const githubUrl = `https://api.github.com/repos/${githubRepo}/contents/components/${componentPath}`;
       console.log(`Fetching from GitHub URL: ${githubUrl}`); // Log the URL
       const response = await fetch(githubUrl, {
         headers: {
