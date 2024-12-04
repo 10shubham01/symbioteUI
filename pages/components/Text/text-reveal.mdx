@@ -1,0 +1,50 @@
+import { Steps } from "nextra/components";
+import ElementWrapper from "@/components/Theme/ElementWrapper";
+import CodeWrapper from "@/components/Theme/CodeWrapper";
+import ElementPreviewWrapper from "@/components/Theme/ElementPreviewWrapper";
+import Example from "@/components/texts/text-reveal-example";
+
+
+# Text Reveal Component
+
+Add sleek, animated Text Reveal effect to your text for a modern user experience.
+
+## Example
+
+<ElementWrapper
+  componentPath="texts/text-reveal-example.tsx"
+  element={
+    <ElementPreviewWrapper>
+      <Example />
+    </ElementPreviewWrapper>
+  }
+/>
+
+## Installation
+
+<Steps>
+### Install the necessary dependencies:
+
+```bash copy
+npm install tailwindcss react-icons framer-motion
+```
+
+### Copy and paste the following code into your project.
+
+<CodeWrapper codePath="/texts/text-reveal.tsx" />
+
+</Steps>
+
+
+## Props
+
+|  Prop    |  Type                        |  Default        |  Description                                                                                      |
+|:----------:|:------------------------------:|:-----------------:|:--------------------------------------------------------------------------------------------------:|
+| `texts`    | `string[]`                    | `[]`              | An array of text strings to be revealed, each on a new line.                                       |
+| `width`    | `"fit-content"` or `"100%"`   | `"fit-content"`   | Specifies the width of the reveal container.                                                      |
+| `boxColor` | `string`                      | `"#5046e6"`       | Custom color for the reveal overlay.                                                              |
+| `duration` | `number`                      | `0.5`             | Duration of the animation in seconds for the overlay and text reveal.                             |
+| `className`| `string`                      | `""`              | Additional classes to style the container or text elements.                                       |
+
+
+
