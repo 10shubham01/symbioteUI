@@ -117,7 +117,6 @@ const HoverableLetter: React.FC<HoverableLetterProps> = ({
   className,
 }) => {
   const [randomLetter, setRandomLetter] = useState(letter);
-  const [hovered, setHovered] = useState(false);
   const [initialAnimationDone, setInitialAnimationDone] = useState(false);
   const controls = useAnimation();
   const ref = useRef(null);
@@ -141,7 +140,6 @@ const HoverableLetter: React.FC<HoverableLetterProps> = ({
   }, [isInView, initialAnimationDone, index, letter, getRandomCharacter]);
 
   const handleMouseEnter = () => {
-    setHovered(true);
     const interval = setInterval(() => {
       setRandomLetter(getRandomCharacter());
     }, 100);
@@ -149,7 +147,6 @@ const HoverableLetter: React.FC<HoverableLetterProps> = ({
   };
 
   const handleMouseLeave = () => {
-    setHovered(false);
     clearInterval((window as any).hoverInterval);
     setRandomLetter(letter);
   };
