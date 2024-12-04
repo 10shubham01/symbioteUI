@@ -1,7 +1,7 @@
 {
   "name": "symbiote-ui",
   "version": "0.0.1",
-  "description": "Nextra docs template",
+  "description": "Symbiote UI",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

@@ -12,7 +12,7 @@ const config: DocsThemeConfig = {
   },
   docsRepositoryBase: "https://github.com/10shubham01/symbioteUI",
   footer: {
-    text: "Nextra Docs Template",
+    text: "Symbiote UI",
   },
 };
 
