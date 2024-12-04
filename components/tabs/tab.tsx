@@ -1,10 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 
-const TOGGLE_CLASSES =
-  "text-sm font-medium flex items-center justify-center w-full px-6 py-2 transition-colors relative z-10";
-
-interface Tab {
+interface item {
   name: string;
   label: string;
   icon: React.ReactNode;
@@ -12,24 +9,22 @@ interface Tab {
 }
 
 interface TabComponentProps {
-  tabs: Tab[];
+  items: item[];
 }
 
-const TabComponent: React.FC<TabComponentProps> = ({ tabs }) => {
-  const [selected, setSelected] = useState(tabs[0].name);
+const TabComponent: React.FC<TabComponentProps> = ({ items }) => {
+  const [selected, setSelected] = useState(items[0].name);
   const [width, setWidth] = useState(0);
   const [left, setLeft] = useState(0);
 
-  // Initialize refs for all tabs
   const tabRefs = useRef<{ [key: string]: React.RefObject<HTMLButtonElement> }>(
-    tabs.reduce((acc, tab) => {
+    items.reduce((acc, tab) => {
       acc[tab.name] = React.createRef();
       return acc;
     }, {} as { [key: string]: React.RefObject<HTMLButtonElement> })
   );
 
   useEffect(() => {
-    // Update width and left position of the selected tab
     const currentTab = tabRefs.current[selected]?.current;
     if (currentTab) {
       setWidth(currentTab.offsetWidth);
@@ -37,23 +32,25 @@ const TabComponent: React.FC<TabComponentProps> = ({ tabs }) => {
     }
   }, [selected]);
 
-  const selectedTab = tabs.find((tab) => tab.name === selected);
+  const selectedTab = items.find((tab) => tab.name === selected);
 
   return (
-    <div className="flex flex-col items-left">
-      <div className="relative flex items-center bg-gray-200 dark:bg-customDark rounded-lg p-1 w-min overflow-hidden">
-        {tabs.map((tab) => (
+    <div className="flex flex-col items-center sm:items-start">
+      <div className="relative flex items-center bg-gray-200 dark:bg-gray-800 rounded-lg p-1 w-full max-w-md sm:max-w-none overflow-hidden">
+        {items.map((tab) => (
           <button
             key={tab.name}
             ref={tabRefs.current[tab.name]}
-            className={`${TOGGLE_CLASSES} ${
+            className={`text-sm font-medium flex items-center justify-center px-3 sm:px-6 sm:py-2 py-1 transition-all relative z-10 ${
               selected === tab.name
-                ? "text-black dark:text-white"
-                : "text-gray-600 dark:text-gray-400"
+                ? "text-black dark:text-white scale-105"
+                : "text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white"
             }`}
             onClick={() => setSelected(tab.name)}
           >
-            <span className="mr-2">{tab.icon}</span>
+            <motion.span whileHover={{ scale: 1.1 }} className="mr-2">
+              {tab.icon}
+            </motion.span>
             {tab.label}
           </button>
         ))}
@@ -64,7 +61,16 @@ const TabComponent: React.FC<TabComponentProps> = ({ tabs }) => {
           style={{ width, left }}
         />
       </div>
-      <div className="mt-4 w-full">{selectedTab?.component}</div>
+      <motion.div
+        key={selected}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -20 }}
+        transition={{ duration: 0.3 }}
+        className="mt-4 w-full"
+      >
+        {selectedTab?.component}
+      </motion.div>
     </div>
   );
 };

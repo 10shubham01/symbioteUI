@@ -17,7 +17,7 @@ const TOGGLE_CLASSES =
 
 const IPhoneMockup: React.FC<{ imageUrl: string }> = ({ imageUrl }) => {
   return (
-    <div className="border-4 border-gray-100 dark:border-customDark shadow-2xl rounded-3xl overflow-hidden max-w-xs mx-auto relative bg-black m-5">
+    <div className="border-4 border-gray-100  shadow-2xl rounded-3xl overflow-hidden max-w-xs mx-auto relative bg-black m-5">
       <div className="absolute top-5 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-24 h-6 dark:bg-customDark rounded-full"></div>
       <div>
         <Image
@@ -35,7 +35,7 @@ const IPhoneMockup: React.FC<{ imageUrl: string }> = ({ imageUrl }) => {
 
 const AndroidMockup: React.FC<{ imageUrl: string }> = ({ imageUrl }) => {
   return (
-    <div className="border-4 border-gray-100 dark:border-customDark shadow-2xl rounded-3xl overflow-hidden max-w-xs mx-auto relative bg-black m-5">
+    <div className="border-4 border-gray-100  shadow-2xl rounded-3xl overflow-hidden max-w-xs mx-auto relative bg-black m-5">
       <div className="absolute top-5 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-4 h-4 dark:bg-background rounded-full"></div>
       <div>
         <Image
@@ -141,7 +141,7 @@ const RnTab: React.FC<TabsProps> = ({
           <div className="w-3 h-3 dark:bg-black bg-gray-300 rounded-full" />
           <div className="w-3 h-3 dark:bg-black bg-gray-300 rounded-full" />
         </div>
-        <div className="border-2 rounded-t-none border-gray-100 dark:border-customDark rounded-2xl">
+        <div className="border-2 rounded-t-none border-gray-100  rounded-2xl">
           {selectedTab?.component}
         </div>
       </div>

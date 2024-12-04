@@ -1,10 +1,11 @@
-export default {
+{
   "index": "Introduction",
   "another": "Another Page",
   "components": "Components",
   "about": {
     "title": "About",
     "type": "page"
+    
   },
   "contact": {
     "title": "Contact ↗",

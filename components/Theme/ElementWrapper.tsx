@@ -96,9 +96,6 @@ const ElementWrapper: React.FC<ElementWrapperProps> = ({
               </button>
             ))}
           </div>
-          {/* <div className="relative cursor-pointer p-3 rounded-lg dark:bg-customDark bg-gray-100 text-gray-500">
-            <LuMoon className="w-4 h-4" />
-          </div> */}
         </div>
         <motion.div
           layout
@@ -108,10 +105,6 @@ const ElementWrapper: React.FC<ElementWrapperProps> = ({
         />
         {previewLink && (
           <div className="flex gap-2">
-            {/* <div className="relative cursor-pointer py-2 px-4 rounded-lg dark:bg-customDark bg-gray-100 text-gray-500 flex items-center">
-           <LuCircleDollarSign className="w-4 h-4 mr-2" />
-           Free component
-         </div> */}
             <button
               className={`rounded-lg md:block hidden dark:bg-customDark bg-gray-200 text-gray-600 dark:text-gray-400 `}
               onClick={handleLinkClick}
@@ -135,11 +128,11 @@ type CodeComponentProps = {
 };
 
 const CodeComponent: React.FC<CodeComponentProps> = ({ componentPath }) => (
-  <div className="border-2 border-gray-100 dark:border-customDark rounded-2xl overflow-hidden">
+  <div className="border-2 border-gray-100  rounded-2xl overflow-hidden">
     <div className="h-8 dark:bg-customDark px-4 flex items-center space-x-2 bg-gray-100">
-      <div className="w-3 h-3 dark:bg-black bg-gray-300 rounded-full" />
-      <div className="w-3 h-3 dark:bg-black bg-gray-300 rounded-full" />
-      <div className="w-3 h-3 dark:bg-black bg-gray-300 rounded-full" />
+      <div className="w-3 h-3  bg-red-500 rounded-full" />
+      <div className="w-3 h-3  bg-yellow-500 rounded-full" />
+      <div className="w-3 h-3  bg-green-500 rounded-full" />
     </div>
     <div className="bg-[#1e1e1e]">
       <SourceCodeViewer componentPath={componentPath} />
@@ -150,11 +143,11 @@ const CodeComponent: React.FC<CodeComponentProps> = ({ componentPath }) => (
 const PreviewComponent: React.FC<{ element: React.ReactNode }> = ({
   element,
 }) => (
-  <div className="border-2 border-gray-100 dark:border-customDark rounded-2xl overflow-hidden">
-    <div className="h-8 dark:bg-customDark px-4 flex items-center space-x-2 bg-gray-100">
-      <div className="w-3 h-3 dark:bg-black bg-gray-300 rounded-full" />
-      <div className="w-3 h-3 dark:bg-black bg-gray-300 rounded-full" />
-      <div className="w-3 h-3 dark:bg-black bg-gray-300 rounded-full" />
+  <div className="border border-gray-200 rounded-2xl overflow-hidden">
+    <div className="h-8 dark:bg-customDark px-4 flex items-center space-x-2 bg-gray-800">
+      <div className="w-3 h-3  bg-red-500 rounded-full" />
+      <div className="w-3 h-3  bg-yellow-500 rounded-full" />
+      <div className="w-3 h-3  bg-green-500 rounded-full" />
     </div>
     {element}
   </div>

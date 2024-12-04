@@ -1,29 +1,34 @@
 import React from "react";
-import { FaHome, FaUser, FaCog } from "react-icons/fa";
+import { FaTrain, FaPlane, FaCar } from "react-icons/fa";
 import Tab from "./tab";
 
-const HomeContent = () => <div>Home Content</div>;
-const ProfileContent = () => <div>Profile Content</div>;
-const SettingsContent = () => <div>Settings Content</div>;
+const Train = () => <div>Train</div>;
+const Plane = () => <div>Plane</div>;
+const Car = () => <div>Car</div>;
 
 const tabs = [
-  { name: "home", label: "Home", icon: <FaHome />, component: <HomeContent /> },
   {
-    name: "profile",
-    label: "Profile",
-    icon: <FaUser />,
-    component: <ProfileContent />,
+    name: "train",
+    label: "Train",
+    icon: <FaTrain />,
+    component: <Train />,
   },
   {
-    name: "settings",
-    label: "Settings",
-    icon: <FaCog />,
-    component: <SettingsContent />,
+    name: "plane",
+    label: "Plane",
+    icon: <FaPlane />,
+    component: <Plane />,
+  },
+  {
+    name: "car",
+    label: "Car",
+    icon: <FaCar />,
+    component: <Car />,
   },
 ];
 
 const Example = () => {
-  return <Tab tabs={tabs} />;
+  return <Tab items={tabs} />;
 };
 
 export default Example;

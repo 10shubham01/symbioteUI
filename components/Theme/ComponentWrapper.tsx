@@ -22,7 +22,7 @@ function ComponentWrapper({ children, title, previewLink }: Props) {
             </button>
           </Link>
         </div>
-        <div className="border-2 border-gray-100 dark:border-customDark rounded-2xl overflow-hidden">
+        <div className="border-2 border-gray-100  rounded-2xl overflow-hidden">
           <div className="h-8 dark:bg-customDark px-4 flex items-center space-x-2 bg-gray-100">
             <div className="w-3 h-3 dark:bg-black bg-gray-300 rounded-full" />
             <div className="w-3 h-3 dark:bg-black bg-gray-300 rounded-full" />
