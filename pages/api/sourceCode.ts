@@ -14,10 +14,11 @@ export default async function handler(
     res.status(400).json({ error: "Component path is required" });
     return;
   }
+      const githubRepo = process.env.GITHUB_REPO;
+      console.log("its repo name",githubRepo);
 
-  try {
-    console.log(process);
-    
+  
+  try {    
     if (process.env.NODE_ENV === "development") {
       // Development: Read from local file system
       const filePath = path.join(
