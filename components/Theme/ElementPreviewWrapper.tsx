@@ -1,8 +1,19 @@
+import { cn } from "@/lib/utils";
 import React from "react";
 
-function ElementPreviewWrapper({ children }: { children: React.ReactNode }) {
+function ElementPreviewWrapper({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
   return (
-    <div className="flex items-center justify-center min-h-fit p-20">
+    <div
+      className={`${cn(
+        className
+      )} flex items-center justify-center min-h-fit p-20`}
+    >
       {children}
     </div>
   );
