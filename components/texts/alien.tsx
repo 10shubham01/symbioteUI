@@ -142,7 +142,7 @@ const HoverableLetter: React.FC<HoverableLetterProps> = ({
   const handleMouseEnter = () => {
     const interval = setInterval(() => {
       setRandomLetter(getRandomCharacter());
-    }, 100);
+    }, 50);
     (window as any).hoverInterval = interval;
   };
 
@@ -156,7 +156,7 @@ const HoverableLetter: React.FC<HoverableLetterProps> = ({
       ref={ref}
       className={`${cn(
         className
-      )} text-6xl font-bold text-rose-500 cursor-pointer tracking-wider`}
+      )} text-6xl font-bold text-rose-500 cursor-pointer`}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       animate={controls}
