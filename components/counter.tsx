@@ -9,7 +9,7 @@ export default function Counter({ value }: { value: number }) {
   return (
     <div
       style={{ fontSize }}
-      className="flex space-x-3 overflow-hidden rounded bg-transparent px-2 leading-none text-gray-900"
+      className="flex space-x-3 overflow-hidden rounded bg-transparent px-2 leading-none text-gray-900 dark:text-gray-100"
     >
       {String(value)
         .split("")

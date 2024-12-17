@@ -1,7 +1,20 @@
 {
-  "index": "Introduction",
+ "index": {
+    "title": "Home",
+    "type": "page",
+    "theme": {
+      "layout": "full"
+    }
+  },
+ 
+  "introduction": "Introduction",
   "installation": "Installation",
-  "components": "Components",
+  "---": {
+    "type": "separator"
+  },
+  "components": {
+    "title":"Components"
+  },
   "contact": {
     "title": "Contact ↗",
     "type": "page",

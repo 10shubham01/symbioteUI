@@ -4,7 +4,7 @@ import path from "path";
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse,
+  res: NextApiResponse
 ) {
   const componentPath = Array.isArray(req.query.componentPath)
     ? req.query.componentPath[0]
@@ -14,18 +14,11 @@ export default async function handler(
     res.status(400).json({ error: "Component path is required" });
     return;
   }
-      const githubRepo = process.env.GITHUB_REPO;
-      console.log("its repo name",githubRepo);
 
-  
-  try {    
+  try {
     if (process.env.NODE_ENV === "development") {
       // Development: Read from local file system
-      const filePath = path.join(
-        process.cwd(),
-        `/components/${componentPath}`,
-      );
-      console.log("Resolved file path:", filePath);
+      const filePath = path.join(process.cwd(), `/components/${componentPath}`);
 
       try {
         const sourceCode = fs.readFileSync(filePath, "utf-8");
@@ -49,13 +42,13 @@ export default async function handler(
       }
 
       const githubUrl = `https://api.github.com/repos/${githubRepo}/contents/components/${componentPath}`;
-      console.log(`Fetching from GitHub URL: ${githubUrl}`); // Log the URL
+
       const response = await fetch(githubUrl, {
         headers: {
           Authorization: `Bearer ${githubToken}`,
         },
       });
-      console.log({ response });
+
       if (!response.ok) {
         const errorText = await response.text();
         console.error(`GitHub fetch error: ${response.status} - ${errorText}`);
@@ -69,12 +62,11 @@ export default async function handler(
       if (!data.content) {
         throw new Error("No content found in the GitHub response");
       }
-
       const sourceCode = Buffer.from(data.content, "base64").toString("utf-8");
       res.status(200).json({ sourceCode });
     }
   } catch (error) {
-    console.error((error as Error).message); // Cast error to Error type
+    console.error((error as Error).message);
     res.status(500).json({ error: "Error fetching source code" });
   }
 }

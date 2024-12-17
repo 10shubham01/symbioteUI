@@ -128,7 +128,7 @@ type CodeComponentProps = {
 };
 
 const CodeComponent: React.FC<CodeComponentProps> = ({ componentPath }) => (
-  <div className="border-2 border-gray-100  rounded-2xl overflow-hidden">
+  <div className="rounded-2xl overflow-hidden">
     <div className="h-8 dark:bg-customDark px-4 flex items-center space-x-2 bg-gray-800">
       <div className="w-3 h-3  bg-red-500 rounded-full" />
       <div className="w-3 h-3  bg-yellow-500 rounded-full" />
@@ -143,7 +143,7 @@ const CodeComponent: React.FC<CodeComponentProps> = ({ componentPath }) => (
 const PreviewComponent: React.FC<{ element: React.ReactNode }> = ({
   element,
 }) => (
-  <div className="border border-gray-200 rounded-2xl overflow-hidden">
+  <div className="rounded-2xl overflow-hidden">
     <div className="h-8 dark:bg-customDark px-4 flex items-center space-x-2 bg-gray-800">
       <div className="w-3 h-3  bg-red-500 rounded-full" />
       <div className="w-3 h-3  bg-yellow-500 rounded-full" />
