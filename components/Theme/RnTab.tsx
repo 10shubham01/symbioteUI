@@ -51,12 +51,12 @@ const AndroidMockup: React.FC<{ imageUrl: string }> = ({ imageUrl }) => {
   )
 }
 
-const RnTab: React.FC<TabsProps> = ({
-  previewLink,
+function RnTab({
+  previewLink: _previewLink,
   componentPath,
   iPhoneMockupUrl,
   androidMockupUrl,
-}) => {
+}: TabsProps) {
   const tabs = [
     {
       name: 'android',
@@ -82,7 +82,7 @@ const RnTab: React.FC<TabsProps> = ({
   const [width, setWidth] = useState(0)
   const [left, setLeft] = useState(0)
 
-  const tabRefs = useRef<{ [key: string]: React.RefObject<HTMLButtonElement> }>(
+  const tabRefs = useRef<{ [key: string]: React.RefObject<HTMLButtonElement> } >(
     tabs.reduce((acc, tab) => {
       acc[tab.name] = React.createRef()
       return acc
@@ -111,11 +111,10 @@ const RnTab: React.FC<TabsProps> = ({
             <button
               key={tab.name}
               ref={tabRefs.current[tab.name]}
-              className={`${TOGGLE_CLASSES} ${
-                selected === tab.name
-                  ? 'text-black dark:text-white'
-                  : 'text-gray-600 dark:text-gray-400'
-              }`}
+              className={`${TOGGLE_CLASSES} ${selected === tab.name
+                ? 'text-black dark:text-white'
+                : 'text-gray-600 dark:text-gray-400'}`}
+              type="button"
               onClick={() => handleTabClick(tab.name)}
             >
               <span className="mr-2">{tab.icon}</span>

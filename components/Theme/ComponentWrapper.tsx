@@ -16,7 +16,7 @@ function ComponentWrapper({ children, title, previewLink }: Props) {
         <div className="flex my-2 justify-between">
           <h3 className="text-[20px] font-medium">{title}</h3>
           <Link href={previewLink}>
-            <button className="relative cursor-pointer px-4 py-2 rounded-lg dark:bg-customDark bg-gray-100 text-gray-300 text-sm flex items-center">
+            <button type="button" className="relative cursor-pointer px-4 py-2 rounded-lg dark:bg-customDark bg-gray-100 text-gray-300 text-sm flex items-center">
               <LuCode className="w-4 h-4 mr-2" />
               Get Code
             </button>

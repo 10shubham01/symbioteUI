@@ -1,6 +1,8 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
+import buffer from 'node:buffer'
 import fs from 'node:fs'
 import path from 'node:path'
+import process from 'node:process'
 
 export default async function handler(
   req: NextApiRequest,
@@ -16,9 +18,9 @@ export default async function handler(
   }
 
   try {
-    if (require('node:process').env.NODE_ENV === 'development') {
+    if (process.env.NODE_ENV === 'development') {
       // Development: Read from local file system
-      const filePath = path.join(require('node:process').cwd(), `/components/${componentPath}`)
+      const filePath = path.join(process.cwd(), `/components/${componentPath}`)
 
       try {
         const sourceCode = fs.readFileSync(filePath, 'utf-8')
@@ -30,8 +32,8 @@ export default async function handler(
       }
     }
     else {
-      const githubRepo = require('node:process').env.GITHUB_REPO
-      const githubToken = require('node:process').env.GITHUB_TOKEN
+      const githubRepo = process.env.GITHUB_REPO
+      const githubToken = process.env.GITHUB_TOKEN
 
       if (!githubRepo || !githubToken) {
         res.status(500).json({ error: 'GitHub configuration is missing' })
@@ -64,7 +66,7 @@ export default async function handler(
       if (!data.content) {
         throw new Error('No content found in the GitHub response')
       }
-      const sourceCode = Buffer.from(data.content, 'base64').toString('utf-8')
+      const sourceCode = buffer.Buffer.from(data.content, 'base64').toString('utf-8')
       res.status(200).json({ sourceCode })
     }
   }

@@ -27,13 +27,14 @@ interface PageWrapperProps {
   link?: string
 
 }
+const emptyItems = []
 
-const PageWrapper: React.FC<PageWrapperProps> = ({ items = [], img, link }) => {
+const PageWrapper: React.FC<PageWrapperProps> = ({ items = emptyItems }) => {
   return (
     <div className="mt-10   gap-4 md:columns-2 lg:columns-3 space-y-4 ">
-      {items.map((category, index) => (
+      {items.map((category, _index) => (
         <a
-          key={index}
+          key={category.link}
           href={category.link}
           className="flex flex-col items-left cursor-pointer"
         >

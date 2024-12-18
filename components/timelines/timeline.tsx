@@ -24,7 +24,7 @@ const Timeline: React.FC<TimelineProps> = ({ items }) => {
           aria-orientation="vertical"
         >
           {items.map((item, index) => (
-            <div key={index} className="relative pl-8">
+            <div key={item.heading} className="relative pl-8">
               <motion.svg
                 initial={{ scale: 0 }}
                 animate={{ scale: index === activeIndex ? 1 : 0.8 }}
