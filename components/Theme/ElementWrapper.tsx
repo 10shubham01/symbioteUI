@@ -15,6 +15,32 @@ interface ElementWrapperProps {
   previewLink?: string
 }
 
+const CodeComponent: React.FC<CodeComponentProps> = ({ componentPath }) => (
+  <div className="rounded-2xl overflow-hidden">
+    <div className="h-8 dark:bg-customDark px-4 flex items-center space-x-2 bg-gray-800">
+      <div className="w-3 h-3  bg-red-500 rounded-full" />
+      <div className="w-3 h-3  bg-yellow-500 rounded-full" />
+      <div className="w-3 h-3  bg-green-500 rounded-full" />
+    </div>
+    <div className="bg-[#1e1e1e]">
+      <SourceCodeViewer componentPath={componentPath} />
+    </div>
+  </div>
+)
+
+const PreviewComponent: React.FC<{ element: React.ReactNode }> = ({
+  element,
+}) => (
+  <div className="rounded-2xl overflow-hidden">
+    <div className="h-8 dark:bg-customDark px-4 flex items-center space-x-2 bg-gray-800">
+      <div className="w-3 h-3  bg-red-500 rounded-full" />
+      <div className="w-3 h-3  bg-yellow-500 rounded-full" />
+      <div className="w-3 h-3  bg-green-500 rounded-full" />
+    </div>
+    {element}
+  </div>
+)
+
 const ElementWrapper: React.FC<ElementWrapperProps> = ({
   element,
   componentPath,
@@ -82,6 +108,7 @@ const ElementWrapper: React.FC<ElementWrapperProps> = ({
           <div className="bg-gray-200 p-1 flex  dark:bg-customDark  rounded-lg">
             {tabs.map(tab => (
               <button
+                type="button"
                 key={tab.name}
                 ref={tabRefs.current[tab.name]}
                 className={` ${TOGGLE_CLASSES} ${
@@ -106,6 +133,7 @@ const ElementWrapper: React.FC<ElementWrapperProps> = ({
         {previewLink && (
           <div className="flex gap-2">
             <button
+              type="button"
               className={`rounded-lg md:block hidden dark:bg-customDark bg-gray-200 text-gray-600 dark:text-gray-400 `}
               onClick={handleLinkClick}
             >
@@ -126,31 +154,5 @@ const ElementWrapper: React.FC<ElementWrapperProps> = ({
 interface CodeComponentProps {
   componentPath: string
 }
-
-const CodeComponent: React.FC<CodeComponentProps> = ({ componentPath }) => (
-  <div className="rounded-2xl overflow-hidden">
-    <div className="h-8 dark:bg-customDark px-4 flex items-center space-x-2 bg-gray-800">
-      <div className="w-3 h-3  bg-red-500 rounded-full" />
-      <div className="w-3 h-3  bg-yellow-500 rounded-full" />
-      <div className="w-3 h-3  bg-green-500 rounded-full" />
-    </div>
-    <div className="bg-[#1e1e1e]">
-      <SourceCodeViewer componentPath={componentPath} />
-    </div>
-  </div>
-)
-
-const PreviewComponent: React.FC<{ element: React.ReactNode }> = ({
-  element,
-}) => (
-  <div className="rounded-2xl overflow-hidden">
-    <div className="h-8 dark:bg-customDark px-4 flex items-center space-x-2 bg-gray-800">
-      <div className="w-3 h-3  bg-red-500 rounded-full" />
-      <div className="w-3 h-3  bg-yellow-500 rounded-full" />
-      <div className="w-3 h-3  bg-green-500 rounded-full" />
-    </div>
-    {element}
-  </div>
-)
 
 export default ElementWrapper

@@ -1,6 +1,5 @@
 {
   "name": "symbiote-ui",
-  "type": "module",
   "version": "0.0.1",
   "description": "Symbiote UI",
   "author": "Shu Ding <g@shud.in>",

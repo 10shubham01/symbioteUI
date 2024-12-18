@@ -52,7 +52,7 @@ const AndroidMockup: React.FC<{ imageUrl: string }> = ({ imageUrl }) => {
 }
 
 const RnTab: React.FC<TabsProps> = ({
-  previewLink,
+  previewLink: _previewLink,
   componentPath,
   iPhoneMockupUrl,
   androidMockupUrl,
@@ -116,6 +116,7 @@ const RnTab: React.FC<TabsProps> = ({
                   ? 'text-black dark:text-white'
                   : 'text-gray-600 dark:text-gray-400'
               }`}
+              type="button"
               onClick={() => handleTabClick(tab.name)}
             >
               <span className="mr-2">{tab.icon}</span>
