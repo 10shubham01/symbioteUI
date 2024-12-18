@@ -1,18 +1,18 @@
-import React, { useState } from "react";
-import { motion } from "framer-motion";
+import { motion } from 'framer-motion'
+import React, { useState } from 'react'
 
 interface TimelineItem {
-  heading: string;
-  label: string;
-  description: string;
+  heading: string
+  label: string
+  description: string
 }
 
 interface TimelineProps {
-  items: TimelineItem[];
+  items: TimelineItem[]
 }
 
 const Timeline: React.FC<TimelineProps> = ({ items }) => {
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(0)
 
   return (
     <div>
@@ -33,22 +33,23 @@ const Timeline: React.FC<TimelineProps> = ({ items }) => {
                 viewBox="0 0 6 6"
                 className={`absolute left-[-1px] top-[0.5625rem] h-2 w-2 overflow-visible ${
                   index === activeIndex
-                    ? "fill-blue-600 stroke-blue-600"
-                    : "fill-transparent stroke-slate-400"
+                    ? 'fill-blue-600 stroke-blue-600'
+                    : 'fill-transparent stroke-slate-400'
                 }`}
               >
                 <path
                   d="M3 0L6 3L3 6L0 3Z"
                   strokeWidth="2"
                   strokeLinejoin="round"
-                ></path>
+                >
+                </path>
               </motion.svg>
               <div className="relative">
                 <div
                   className={`font-mono text-sm ${
                     index === activeIndex
-                      ? "text-blue-600"
-                      : "text-slate-500 dark:text-slate-100"
+                      ? 'text-blue-600'
+                      : 'text-slate-500 dark:text-slate-100'
                   }`}
                 >
                   <button
@@ -98,7 +99,7 @@ const Timeline: React.FC<TimelineProps> = ({ items }) => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Timeline;
+export default Timeline

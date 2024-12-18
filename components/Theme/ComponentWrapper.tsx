@@ -1,13 +1,13 @@
-import { LuCode } from "react-icons/lu";
+import Link from 'next/link'
 
-import Link from "next/link";
-import React from "react";
+import React from 'react'
+import { LuCode } from 'react-icons/lu'
 
-type Props = {
-  children: React.ReactNode;
-  title: string;
-  previewLink: string;
-};
+interface Props {
+  children: React.ReactNode
+  title: string
+  previewLink: string
+}
 
 function ComponentWrapper({ children, title, previewLink }: Props) {
   return (
@@ -32,7 +32,7 @@ function ComponentWrapper({ children, title, previewLink }: Props) {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default ComponentWrapper;
+export default ComponentWrapper

@@ -1,19 +1,19 @@
-import React, { useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
-import SourceCodeViewer from "@/utils/SourceCodeViewer"; // Ensure this path is correct
-import { LuArrowUpRight } from "react-icons/lu";
-import { CgWebsite } from "react-icons/cg";
-import { FaCode } from "react-icons/fa6";
+import SourceCodeViewer from '@/utils/SourceCodeViewer' // Ensure this path is correct
+import { motion } from 'framer-motion'
+import React, { useEffect, useRef, useState } from 'react'
+import { CgWebsite } from 'react-icons/cg'
+import { FaCode } from 'react-icons/fa6'
+import { LuArrowUpRight } from 'react-icons/lu'
 
-const TOGGLE_CLASSES =
-  "text-sm font-medium flex items-center justify-center px-6 py-2 transition-colors relative z-10";
+const TOGGLE_CLASSES
+  = 'text-sm font-medium flex items-center justify-center px-6 py-2 transition-colors relative z-10'
 
-type ElementWrapperProps = {
-  type?: string;
-  element: React.ReactNode;
-  componentPath: string;
-  previewLink?: string;
-};
+interface ElementWrapperProps {
+  type?: string
+  element: React.ReactNode
+  componentPath: string
+  previewLink?: string
+}
 
 const ElementWrapper: React.FC<ElementWrapperProps> = ({
   element,
@@ -21,73 +21,73 @@ const ElementWrapper: React.FC<ElementWrapperProps> = ({
   previewLink,
   type,
 }) => {
-  const tabs =
-    type === "loading"
+  const tabs
+    = type === 'loading'
       ? [
           {
-            name: "Preview",
-            label: "Preview",
+            name: 'Preview',
+            label: 'Preview',
             icon: <CgWebsite />,
             component: <PreviewComponent element={element} />,
           },
         ]
       : [
           {
-            name: "Preview",
-            label: "Preview",
+            name: 'Preview',
+            label: 'Preview',
             icon: <CgWebsite />,
             component: <PreviewComponent element={element} />,
           },
           {
-            name: "Code",
-            label: "Code",
+            name: 'Code',
+            label: 'Code',
             icon: <FaCode />,
             component: <CodeComponent componentPath={componentPath} />,
           },
-        ];
+        ]
 
-  const [selected, setSelected] = useState(tabs[0].name);
-  const [width, setWidth] = useState(0);
-  const [left, setLeft] = useState(0);
+  const [selected, setSelected] = useState(tabs[0].name)
+  const [width, setWidth] = useState(0)
+  const [left, setLeft] = useState(0)
 
   const tabRefs = useRef<{ [key: string]: React.RefObject<HTMLButtonElement> }>(
     tabs.reduce((acc, tab) => {
-      acc[tab.name] = React.createRef();
-      return acc;
-    }, {} as { [key: string]: React.RefObject<HTMLButtonElement> })
-  );
+      acc[tab.name] = React.createRef()
+      return acc
+    }, {} as { [key: string]: React.RefObject<HTMLButtonElement> }),
+  )
 
   useEffect(() => {
-    const currentTab = tabRefs.current[selected]?.current;
+    const currentTab = tabRefs.current[selected]?.current
     if (currentTab) {
-      setWidth(currentTab.offsetWidth);
-      setLeft(currentTab.offsetLeft);
+      setWidth(currentTab.offsetWidth)
+      setLeft(currentTab.offsetLeft)
     }
-  }, [selected]);
+  }, [selected])
 
   const handleTabClick = (tabName: string) => {
-    setSelected(tabName);
-  };
+    setSelected(tabName)
+  }
 
   const handleLinkClick = () => {
-    window.open(`/preview/${previewLink}`, "_blank");
-  };
+    window.open(`/preview/${previewLink}`, '_blank')
+  }
 
-  const selectedTab = tabs.find((tab) => tab.name === selected);
+  const selectedTab = tabs.find(tab => tab.name === selected)
 
   return (
     <div className="flex flex-col items-left">
       <div className="relative flex flex-row gap-2  justify-between mt-3 items-center rounded-lg  ">
         <div className="flex gap-2  ">
           <div className="bg-gray-200 p-1 flex  dark:bg-customDark  rounded-lg">
-            {tabs.map((tab) => (
+            {tabs.map(tab => (
               <button
                 key={tab.name}
                 ref={tabRefs.current[tab.name]}
                 className={` ${TOGGLE_CLASSES} ${
                   selected === tab.name
-                    ? "text-black dark:text-white"
-                    : "text-gray-600 dark:text-gray-400"
+                    ? 'text-black dark:text-white'
+                    : 'text-gray-600 dark:text-gray-400'
                 }`}
                 onClick={() => handleTabClick(tab.name)}
               >
@@ -99,7 +99,7 @@ const ElementWrapper: React.FC<ElementWrapperProps> = ({
         </div>
         <motion.div
           layout
-          transition={{ type: "spring", damping: 15, stiffness: 250 }}
+          transition={{ type: 'spring', damping: 15, stiffness: 250 }}
           className="absolute top-1 bottom-1 bg-white dark:bg-[#373737] rounded-md shadow-md"
           style={{ width, left }}
         />
@@ -120,12 +120,12 @@ const ElementWrapper: React.FC<ElementWrapperProps> = ({
 
       <div className="mt-4  w-full">{selectedTab?.component}</div>
     </div>
-  );
-};
+  )
+}
 
-type CodeComponentProps = {
-  componentPath: string;
-};
+interface CodeComponentProps {
+  componentPath: string
+}
 
 const CodeComponent: React.FC<CodeComponentProps> = ({ componentPath }) => (
   <div className="rounded-2xl overflow-hidden">
@@ -138,7 +138,7 @@ const CodeComponent: React.FC<CodeComponentProps> = ({ componentPath }) => (
       <SourceCodeViewer componentPath={componentPath} />
     </div>
   </div>
-);
+)
 
 const PreviewComponent: React.FC<{ element: React.ReactNode }> = ({
   element,
@@ -151,6 +151,6 @@ const PreviewComponent: React.FC<{ element: React.ReactNode }> = ({
     </div>
     {element}
   </div>
-);
+)
 
-export default ElementWrapper;
+export default ElementWrapper

@@ -1,12 +1,12 @@
-import AnimatedText from "@/components/texts/hero-title";
-import TypeWriter from "@/components/texts/typewriter";
+import AnimatedText from '@/components/texts/hero-title'
+import TypeWriter from '@/components/texts/typewriter'
 
-import localFont from "next/font/local";
-import Image from "next/image";
-import { motion } from "framer-motion";
-import Link from "next/link";
+import { motion } from 'framer-motion'
+import localFont from 'next/font/local'
+import Image from 'next/image'
+import Link from 'next/link'
 
-const myFont = localFont({ src: "../../fonts/UltraSolar Normal.ttf" });
+const myFont = localFont({ src: '../../fonts/UltraSolar Normal.ttf' })
 
 export default function Hero() {
   return (
@@ -14,14 +14,14 @@ export default function Hero() {
       <div className="flex flex-col justify-center items-center">
         <motion.div
           className="size-[300px] flex justify-between overflow-hidden rounded-full bg-transparent"
-          initial={{ borderRadius: "50%" }}
-          animate={{ borderRadius: "0%" }}
-          transition={{ duration: 2, ease: "circInOut", delay: 0.5 }}
+          initial={{ borderRadius: '50%' }}
+          animate={{ borderRadius: '0%' }}
+          transition={{ duration: 2, ease: 'circInOut', delay: 0.5 }}
         >
           <motion.div
-            initial={{ rotate: -20, marginLeft: "-10rem" }}
-            animate={{ rotate: 0, marginLeft: "0rem" }}
-            transition={{ duration: 3, delay: 0.5, ease: "backOut" }}
+            initial={{ rotate: -20, marginLeft: '-10rem' }}
+            animate={{ rotate: 0, marginLeft: '0rem' }}
+            transition={{ duration: 3, delay: 0.5, ease: 'backOut' }}
           >
             <Image
               src="/ogl.png"
@@ -32,9 +32,9 @@ export default function Hero() {
             />
           </motion.div>
           <motion.div
-            initial={{ rotate: 20, marginRight: "-10rem" }}
-            animate={{ rotate: 0, marginRight: "0rem" }}
-            transition={{ duration: 3, delay: 0.5, ease: "backOut" }}
+            initial={{ rotate: 20, marginRight: '-10rem' }}
+            animate={{ rotate: 0, marginRight: '0rem' }}
+            transition={{ duration: 3, delay: 0.5, ease: 'backOut' }}
           >
             <Image
               src="/ogr.png"
@@ -54,7 +54,8 @@ export default function Hero() {
       <TypeWriter
         text="Design faster, animate smoother, code smarter"
         className="sm:text-5xl text-2xl mb-2"
-      ></TypeWriter>
+      >
+      </TypeWriter>
       <p className="sm:w-1/2 text-center">
         Irresistibly interactive, animated UI components and templates for
         React, Tailwind CSS, Framer Motion, and more. Simply copy & paste into
@@ -67,5 +68,5 @@ export default function Hero() {
         Get Started
       </Link>
     </div>
-  );
+  )
 }

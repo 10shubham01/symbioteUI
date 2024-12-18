@@ -1,7 +1,8 @@
-import React from "react";
-import Counter from "./counter";
-const Example = () => {
-  return <Counter value={new Date().getFullYear()} />;
-};
+import React from 'react'
+import Counter from './counter'
 
-export default Example;
+function Example() {
+  return <Counter value={new Date().getFullYear()} />
+}
+
+export default Example

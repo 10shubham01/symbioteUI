@@ -1,5 +1,5 @@
-import React from "react";
-import { DocsThemeConfig } from "nextra-theme-docs";
+import type { DocsThemeConfig } from 'nextra-theme-docs'
+import React from 'react'
 
 const config: DocsThemeConfig = {
   logo: (
@@ -15,15 +15,15 @@ const config: DocsThemeConfig = {
   ),
   editLink: { component: null },
   project: {
-    link: "https://github.com/10shubham01/symbioteUI",
+    link: 'https://github.com/10shubham01/symbioteUI',
   },
   chat: {
-    link: "https://discord.com",
+    link: 'https://discord.com',
   },
-  docsRepositoryBase: "https://github.com/10shubham01/symbioteUI",
+  docsRepositoryBase: 'https://github.com/10shubham01/symbioteUI',
   footer: {
-    text: "Symbiote UI",
+    text: 'Symbiote UI',
   },
-};
+}
 
-export default config;
+export default config

@@ -1,19 +1,19 @@
 {
- "index": {
+  "index": {
     "title": "Home",
     "type": "page",
     "theme": {
       "layout": "full"
     }
   },
- 
+
   "introduction": "Introduction",
   "installation": "Installation",
   "---": {
     "type": "separator"
   },
   "components": {
-    "title":"Components"
+    "title": "Components"
   },
   "contact": {
     "title": "Contact ↗",

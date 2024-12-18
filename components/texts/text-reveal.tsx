@@ -1,45 +1,46 @@
-"use client";
+'use client'
 
-import { useEffect, useRef } from "react";
-import { motion, useAnimation, useInView } from "framer-motion";
-import { cn } from "@/lib/utils";
+import { cn } from '@/lib/utils'
+import { motion, useAnimation, useInView } from 'framer-motion'
+import { useEffect, useRef } from 'react'
 
 interface TextRevealProps {
-  texts: string[];
-  width?: "fit-content" | "100%";
-  boxColor?: string;
-  duration?: number;
-  className?: string;
+  texts: string[]
+  width?: 'fit-content' | '100%'
+  boxColor?: string
+  duration?: number
+  className?: string
 }
 
-export const TextReveal = ({
+export function TextReveal({
   texts,
-  width = "fit-content",
+  width = 'fit-content',
   boxColor,
   duration,
   className,
-}: TextRevealProps) => {
-  const mainControls = useAnimation();
-  const slideControls = useAnimation();
+}: TextRevealProps) {
+  const mainControls = useAnimation()
+  const slideControls = useAnimation()
 
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true })
 
   useEffect(() => {
     if (isInView) {
-      slideControls.start("visible");
-      mainControls.start("visible");
-    } else {
-      slideControls.start("hidden");
-      mainControls.start("hidden");
+      slideControls.start('visible')
+      mainControls.start('visible')
     }
-  }, [isInView, mainControls, slideControls]);
+    else {
+      slideControls.start('hidden')
+      mainControls.start('hidden')
+    }
+  }, [isInView, mainControls, slideControls])
 
   return (
     <div
       ref={ref}
-      className={cn("relative", className)}
-      style={{ width, overflow: "hidden" }}
+      className={cn('relative', className)}
+      style={{ width, overflow: 'hidden' }}
     >
       {texts.map((text, index) => (
         <div key={index} className="relative my-1">
@@ -51,7 +52,7 @@ export const TextReveal = ({
               delay: index * 0.2 + 1,
               duration: 0.5,
             }}
-            style={{ overflow: "hidden" }}
+            style={{ overflow: 'hidden' }}
           >
             {text}
           </motion.p>
@@ -59,28 +60,28 @@ export const TextReveal = ({
           <motion.div
             variants={{
               hidden: { left: 0 },
-              visible: { left: "100%" },
+              visible: { left: '100%' },
             }}
             initial="hidden"
             animate={slideControls}
             transition={{
-              duration: duration ? duration : index * 0.2 + 1,
-              ease: "easeInOut",
+              duration: duration || index * 0.2 + 1,
+              ease: 'easeInOut',
             }}
             style={{
-              position: "absolute",
+              position: 'absolute',
               top: 1,
               bottom: 1,
               left: 0,
               right: 0,
               zIndex: 10,
-              background: boxColor ? boxColor : "#f0ff",
+              background: boxColor || '#f0ff',
             }}
           />
         </div>
       ))}
     </div>
-  );
-};
+  )
+}
 
-export default TextReveal;
+export default TextReveal
