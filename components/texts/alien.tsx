@@ -14,12 +14,12 @@ interface HoverableLetterProps {
   className: string
 }
 
-const HoverableLetter: React.FC<HoverableLetterProps> = ({
+function HoverableLetter({
   letter,
   getRandomCharacter,
   index,
   className,
-}) => {
+}: HoverableLetterProps) {
   const [randomLetter, setRandomLetter] = useState(letter)
   const [initialAnimationDone, setInitialAnimationDone] = useState(false)
   const controls = useAnimation()
@@ -70,7 +70,7 @@ const HoverableLetter: React.FC<HoverableLetterProps> = ({
   )
 }
 
-const Alien: React.FC<AlienProps> = ({ text, className = '' }) => {
+function Alien({ text, className = '' }: AlienProps) {
   const _array = [
     'ア',
     'イ',
@@ -148,21 +148,22 @@ const Alien: React.FC<AlienProps> = ({ text, className = '' }) => {
     'ポ',
   ]
 
-  const getRandomCharacter = () =>
-    _array[Math.floor(Math.random() * _array.length)]
+  const getRandomCharacter = () => _array[Math.floor(Math.random() * _array.length)]
 
   return (
     <div className="flex space-x-1">
-      {text.split('').map((letter, index) => (
-        <HoverableLetter
-          // eslint-disable-next-line react/no-array-index-key
-          key={index}
-          letter={letter}
-          getRandomCharacter={getRandomCharacter}
-          index={index}
-          className={className}
-        />
-      ))}
+      {text.split('').map((letter, index) => {
+        return (
+          <HoverableLetter
+
+            key={index}
+            letter={letter}
+            getRandomCharacter={getRandomCharacter}
+            index={index}
+            className={className}
+          />
+        )
+      })}
     </div>
   )
 }

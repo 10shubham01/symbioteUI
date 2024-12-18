@@ -15,68 +15,71 @@ interface ElementWrapperProps {
   previewLink?: string
 }
 
-const CodeComponent: React.FC<CodeComponentProps> = ({ componentPath }) => (
-  <div className="rounded-2xl overflow-hidden">
-    <div className="h-8 dark:bg-customDark px-4 flex items-center space-x-2 bg-gray-800">
-      <div className="w-3 h-3  bg-red-500 rounded-full" />
-      <div className="w-3 h-3  bg-yellow-500 rounded-full" />
-      <div className="w-3 h-3  bg-green-500 rounded-full" />
+function CodeComponent({ componentPath }: CodeComponentProps) {
+  return (
+    <div className="rounded-2xl overflow-hidden">
+      <div className="h-8 dark:bg-customDark px-4 flex items-center space-x-2 bg-gray-800">
+        <div className="w-3 h-3  bg-red-500 rounded-full" />
+        <div className="w-3 h-3  bg-yellow-500 rounded-full" />
+        <div className="w-3 h-3  bg-green-500 rounded-full" />
+      </div>
+      <div className="bg-[#1e1e1e]">
+        <SourceCodeViewer componentPath={componentPath} />
+      </div>
     </div>
-    <div className="bg-[#1e1e1e]">
-      <SourceCodeViewer componentPath={componentPath} />
-    </div>
-  </div>
-)
+  )
+}
 
-const PreviewComponent: React.FC<{ element: React.ReactNode }> = ({
+function PreviewComponent({
   element,
-}) => (
-  <div className="rounded-2xl overflow-hidden">
-    <div className="h-8 dark:bg-customDark px-4 flex items-center space-x-2 bg-gray-800">
-      <div className="w-3 h-3  bg-red-500 rounded-full" />
-      <div className="w-3 h-3  bg-yellow-500 rounded-full" />
-      <div className="w-3 h-3  bg-green-500 rounded-full" />
+}) {
+  return (
+    <div className="rounded-2xl overflow-hidden">
+      <div className="h-8 dark:bg-customDark px-4 flex items-center space-x-2 bg-gray-800">
+        <div className="w-3 h-3  bg-red-500 rounded-full" />
+        <div className="w-3 h-3  bg-yellow-500 rounded-full" />
+        <div className="w-3 h-3  bg-green-500 rounded-full" />
+      </div>
+      {element}
     </div>
-    {element}
-  </div>
-)
+  )
+}
 
-const ElementWrapper: React.FC<ElementWrapperProps> = ({
+function ElementWrapper({
   element,
   componentPath,
   previewLink,
   type,
-}) => {
-  const tabs
-    = type === 'loading'
-      ? [
-          {
-            name: 'Preview',
-            label: 'Preview',
-            icon: <CgWebsite />,
-            component: <PreviewComponent element={element} />,
-          },
-        ]
-      : [
-          {
-            name: 'Preview',
-            label: 'Preview',
-            icon: <CgWebsite />,
-            component: <PreviewComponent element={element} />,
-          },
-          {
-            name: 'Code',
-            label: 'Code',
-            icon: <FaCode />,
-            component: <CodeComponent componentPath={componentPath} />,
-          },
-        ]
+}: ElementWrapperProps) {
+  const tabs = type === 'loading'
+    ? [
+        {
+          name: 'Preview',
+          label: 'Preview',
+          icon: <CgWebsite />,
+          component: <PreviewComponent element={element} />,
+        },
+      ]
+    : [
+        {
+          name: 'Preview',
+          label: 'Preview',
+          icon: <CgWebsite />,
+          component: <PreviewComponent element={element} />,
+        },
+        {
+          name: 'Code',
+          label: 'Code',
+          icon: <FaCode />,
+          component: <CodeComponent componentPath={componentPath} />,
+        },
+      ]
 
   const [selected, setSelected] = useState(tabs[0].name)
   const [width, setWidth] = useState(0)
   const [left, setLeft] = useState(0)
 
-  const tabRefs = useRef<{ [key: string]: React.RefObject<HTMLButtonElement> }>(
+  const tabRefs = useRef<{ [key: string]: React.RefObject<HTMLButtonElement> } >(
     tabs.reduce((acc, tab) => {
       acc[tab.name] = React.createRef()
       return acc
@@ -111,11 +114,9 @@ const ElementWrapper: React.FC<ElementWrapperProps> = ({
                 type="button"
                 key={tab.name}
                 ref={tabRefs.current[tab.name]}
-                className={` ${TOGGLE_CLASSES} ${
-                  selected === tab.name
-                    ? 'text-black dark:text-white'
-                    : 'text-gray-600 dark:text-gray-400'
-                }`}
+                className={` ${TOGGLE_CLASSES} ${selected === tab.name
+                  ? 'text-black dark:text-white'
+                  : 'text-gray-600 dark:text-gray-400'}`}
                 onClick={() => handleTabClick(tab.name)}
               >
                 <span className="mr-2">{tab.icon}</span>

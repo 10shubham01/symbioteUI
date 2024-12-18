@@ -12,12 +12,12 @@ interface TabComponentProps {
   items: item[]
 }
 
-const TabComponent: React.FC<TabComponentProps> = ({ items }) => {
+function TabComponent({ items }: TabComponentProps) {
   const [selected, setSelected] = useState(items[0].name)
   const [width, setWidth] = useState(0)
   const [left, setLeft] = useState(0)
 
-  const tabRefs = useRef<{ [key: string]: React.RefObject<HTMLButtonElement> }>(
+  const tabRefs = useRef<{ [key: string]: React.RefObject<HTMLButtonElement> } >(
     items.reduce((acc, tab) => {
       acc[tab.name] = React.createRef()
       return acc
@@ -41,11 +41,10 @@ const TabComponent: React.FC<TabComponentProps> = ({ items }) => {
           <button
             key={tab.name}
             ref={tabRefs.current[tab.name]}
-            className={`text-sm font-medium flex items-center justify-center px-3 sm:px-6 sm:py-2 py-1 transition-all relative z-10 ${
-              selected === tab.name
-                ? 'text-black dark:text-white scale-105'
-                : 'text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white'
-            }`}
+            className={`text-sm font-medium flex items-center justify-center px-3 sm:px-6 sm:py-2 py-1 transition-all relative z-10 ${selected === tab.name
+              ? 'text-black dark:text-white scale-105'
+              : 'text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white'}`}
+            type="button"
             onClick={() => setSelected(tab.name)}
           >
             <motion.span whileHover={{ scale: 1.1 }} className="mr-2">
