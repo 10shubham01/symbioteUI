@@ -1,5 +1,5 @@
-import { motion } from 'framer-motion'
-import React, { useEffect, useRef, useState } from 'react'
+import { motion } from 'framer-motion';
+import React, { useEffect, useRef, useState } from 'react';
 
 interface item {
   name: string
@@ -13,26 +13,26 @@ interface TabComponentProps {
 }
 
 function TabComponent({ items }: TabComponentProps) {
-  const [selected, setSelected] = useState(items[0].name)
-  const [width, setWidth] = useState(0)
-  const [left, setLeft] = useState(0)
+  const [selected, setSelected] = useState(items[0].name);
+  const [width, setWidth] = useState(0);
+  const [left, setLeft] = useState(0);
 
   const tabRefs = useRef<{ [key: string]: React.RefObject<HTMLButtonElement> } >(
     items.reduce((acc, tab) => {
-      acc[tab.name] = React.createRef()
-      return acc
+      acc[tab.name] = React.createRef();
+      return acc;
     }, {} as { [key: string]: React.RefObject<HTMLButtonElement> }),
-  )
+  );
 
   useEffect(() => {
-    const currentTab = tabRefs.current[selected]?.current
+    const currentTab = tabRefs.current[selected]?.current;
     if (currentTab) {
-      setWidth(currentTab.offsetWidth)
-      setLeft(currentTab.offsetLeft)
+      setWidth(currentTab.offsetWidth);
+      setLeft(currentTab.offsetLeft);
     }
-  }, [selected])
+  }, [selected]);
 
-  const selectedTab = items.find(tab => tab.name === selected)
+  const selectedTab = items.find(tab => tab.name === selected);
 
   return (
     <div className="flex flex-col items-center sm:items-start">
@@ -71,7 +71,7 @@ function TabComponent({ items }: TabComponentProps) {
         {selectedTab?.component}
       </motion.div>
     </div>
-  )
+  );
 }
 
-export default TabComponent
+export default TabComponent;

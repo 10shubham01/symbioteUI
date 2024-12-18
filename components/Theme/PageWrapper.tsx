@@ -1,7 +1,7 @@
-import type { HTMLMotionProps } from 'framer-motion'
-import { motion } from 'framer-motion'
-import Image from 'next/image'
-import React from 'react'
+import type { HTMLMotionProps } from 'framer-motion';
+import { motion } from 'framer-motion';
+import Image from 'next/image';
+import React from 'react';
 
 interface AnimatedDivProps extends HTMLMotionProps<'div'> {
   children: React.ReactNode
@@ -18,8 +18,8 @@ const AnimatedDiv: React.FC<AnimatedDivProps> = ({ children, ...rest }) => {
     >
       {children}
     </motion.div>
-  )
-}
+  );
+};
 
 interface PageWrapperProps {
   items?: { img: string, link: string }[]
@@ -27,7 +27,7 @@ interface PageWrapperProps {
   link?: string
 
 }
-const emptyItems = []
+const emptyItems = [];
 
 const PageWrapper: React.FC<PageWrapperProps> = ({ items = emptyItems }) => {
   return (
@@ -52,7 +52,7 @@ const PageWrapper: React.FC<PageWrapperProps> = ({ items = emptyItems }) => {
         </a>
       ))}
     </div>
-  )
-}
+  );
+};
 
-export default PageWrapper
+export default PageWrapper;

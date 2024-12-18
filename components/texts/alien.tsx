@@ -1,6 +1,6 @@
-import { cn } from '@/lib/utils'
-import { motion, useAnimation, useInView } from 'framer-motion'
-import React, { useEffect, useRef, useState } from 'react'
+import { cn } from '@/lib/utils';
+import { motion, useAnimation, useInView } from 'framer-motion';
+import React, { useEffect, useRef, useState } from 'react';
 
 interface AlienProps {
   text: string
@@ -20,40 +20,40 @@ function HoverableLetter({
   index,
   className,
 }: HoverableLetterProps) {
-  const [randomLetter, setRandomLetter] = useState(letter)
-  const [initialAnimationDone, setInitialAnimationDone] = useState(false)
-  const controls = useAnimation()
-  const ref = useRef(null)
+  const [randomLetter, setRandomLetter] = useState(letter);
+  const [initialAnimationDone, setInitialAnimationDone] = useState(false);
+  const controls = useAnimation();
+  const ref = useRef(null);
 
-  const isInView = useInView(ref, { once: true })
+  const isInView = useInView(ref, { once: true });
 
   useEffect(() => {
     if (isInView && !initialAnimationDone) {
-      let animationInterval: NodeJS.Timeout
+      let animationInterval: NodeJS.Timeout;
       setTimeout(() => {
         animationInterval = setInterval(() => {
-          setRandomLetter(getRandomCharacter())
-        }, 50)
+          setRandomLetter(getRandomCharacter());
+        }, 50);
         setTimeout(() => {
-          clearInterval(animationInterval)
-          setRandomLetter(letter)
-          setInitialAnimationDone(true)
-        }, 1000) // Random animation lasts for 1 second
-      }, index * 150) // Stagger delay
+          clearInterval(animationInterval);
+          setRandomLetter(letter);
+          setInitialAnimationDone(true);
+        }, 1000); // Random animation lasts for 1 second
+      }, index * 150); // Stagger delay
     }
-  }, [isInView, initialAnimationDone, index, letter, getRandomCharacter])
+  }, [isInView, initialAnimationDone, index, letter, getRandomCharacter]);
 
   const handleMouseEnter = () => {
     const interval = setInterval(() => {
-      setRandomLetter(getRandomCharacter())
+      setRandomLetter(getRandomCharacter());
     }, 50);
-    (window as any).hoverInterval = interval
-  }
+    (window as any).hoverInterval = interval;
+  };
 
   const handleMouseLeave = () => {
-    clearInterval((window as any).hoverInterval)
-    setRandomLetter(letter)
-  }
+    clearInterval((window as any).hoverInterval);
+    setRandomLetter(letter);
+  };
 
   return (
     <motion.span
@@ -67,7 +67,7 @@ function HoverableLetter({
     >
       {randomLetter}
     </motion.span>
-  )
+  );
 }
 
 function Alien({ text, className = '' }: AlienProps) {
@@ -146,9 +146,9 @@ function Alien({ text, className = '' }: AlienProps) {
     'プ',
     'ペ',
     'ポ',
-  ]
+  ];
 
-  const getRandomCharacter = () => _array[Math.floor(Math.random() * _array.length)]
+  const getRandomCharacter = () => _array[Math.floor(Math.random() * _array.length)];
 
   return (
     <div className="flex space-x-1">
@@ -162,10 +162,10 @@ function Alien({ text, className = '' }: AlienProps) {
             index={index}
             className={className}
           />
-        )
+        );
       })}
     </div>
-  )
+  );
 }
 
-export default Alien
+export default Alien;

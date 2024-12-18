@@ -1,10 +1,10 @@
-import type { MotionValue } from 'framer-motion'
-import { motion, useSpring, useTransform } from 'framer-motion'
-import { useEffect } from 'react'
+import type { MotionValue } from 'framer-motion';
+import { motion, useSpring, useTransform } from 'framer-motion';
+import { useEffect } from 'react';
 
-const fontSize = 200
-const padding = 15
-const height = fontSize + padding
+const fontSize = 200;
+const padding = 15;
+const height = fontSize + padding;
 
 export default function Counter({ value }: { value: number }) {
   return (
@@ -19,16 +19,16 @@ export default function Counter({ value }: { value: number }) {
         ))
         .reverse()}
     </div>
-  )
+  );
 }
 
 function Digit({ place, value }: { place: number, value: number }) {
-  const animatedValue = useSpring(0, { stiffness: 50, damping: 20 })
+  const animatedValue = useSpring(0, { stiffness: 50, damping: 20 });
 
   useEffect(() => {
-    const valueRoundedToPlace = Math.floor(value / place)
-    animatedValue.set(valueRoundedToPlace)
-  }, [animatedValue, value, place])
+    const valueRoundedToPlace = Math.floor(value / place);
+    animatedValue.set(valueRoundedToPlace);
+  }, [animatedValue, value, place]);
 
   return (
     <div style={{ height }} className="relative w-[1ch] tabular-nums">
@@ -36,22 +36,22 @@ function Digit({ place, value }: { place: number, value: number }) {
         <Number key={i} mv={animatedValue} number={i} />
       ))}
     </div>
-  )
+  );
 }
 
 function Number({ mv, number }: { mv: MotionValue, number: number }) {
   const y = useTransform(mv, (latest) => {
-    const placeValue = latest % 10
-    const offset = (10 + number - placeValue) % 10
+    const placeValue = latest % 10;
+    const offset = (10 + number - placeValue) % 10;
 
-    let memo = offset * height
+    let memo = offset * height;
 
     if (offset > 5) {
-      memo -= 10 * height
+      memo -= 10 * height;
     }
 
-    return memo
-  })
+    return memo;
+  });
 
   return (
     <motion.span
@@ -60,5 +60,5 @@ function Number({ mv, number }: { mv: MotionValue, number: number }) {
     >
       {number}
     </motion.span>
-  )
+  );
 }

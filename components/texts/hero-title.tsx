@@ -1,6 +1,6 @@
-'use client'
-import { cn } from '@/lib/utils'
-import { motion } from 'framer-motion'
+'use client';
+import { cn } from '@/lib/utils';
+import { motion } from 'framer-motion';
 
 export default function HeroText({
   text,
@@ -15,7 +15,7 @@ export default function HeroText({
         staggerChildren: 0.5,
       },
     },
-  }
+  };
 
   return (
     <div className={`${cn(className)} relative`}>
@@ -80,5 +80,5 @@ export default function HeroText({
         ))}
       </div>
     </div>
-  )
+  );
 }

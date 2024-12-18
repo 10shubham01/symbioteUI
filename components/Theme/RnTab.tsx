@@ -1,9 +1,9 @@
-import SourceCodeViewer from '@/utils/SourceCodeViewer'
-import { motion } from 'framer-motion'
-import Image from 'next/image'
-import React, { useEffect, useRef, useState } from 'react'
-import { FaAndroid, FaApple, FaCode } from 'react-icons/fa'
-import { LuCircleDollarSign } from 'react-icons/lu'
+import SourceCodeViewer from '@/utils/SourceCodeViewer';
+import { motion } from 'framer-motion';
+import Image from 'next/image';
+import React, { useEffect, useRef, useState } from 'react';
+import { FaAndroid, FaApple, FaCode } from 'react-icons/fa';
+import { LuCircleDollarSign } from 'react-icons/lu';
 
 interface TabsProps {
   previewLink: string
@@ -13,7 +13,7 @@ interface TabsProps {
 }
 
 const TOGGLE_CLASSES
-  = 'text-sm font-medium flex items-center justify-center px-6 py-2 transition-colors relative z-10'
+  = 'text-sm font-medium flex items-center justify-center px-6 py-2 transition-colors relative z-10';
 
 const IPhoneMockup: React.FC<{ imageUrl: string }> = ({ imageUrl }) => {
   return (
@@ -30,8 +30,8 @@ const IPhoneMockup: React.FC<{ imageUrl: string }> = ({ imageUrl }) => {
         />
       </div>
     </div>
-  )
-}
+  );
+};
 
 const AndroidMockup: React.FC<{ imageUrl: string }> = ({ imageUrl }) => {
   return (
@@ -48,8 +48,8 @@ const AndroidMockup: React.FC<{ imageUrl: string }> = ({ imageUrl }) => {
         />
       </div>
     </div>
-  )
-}
+  );
+};
 
 function RnTab({
   previewLink: _previewLink,
@@ -76,32 +76,32 @@ function RnTab({
       icon: <FaCode />,
       component: <SourceCodeViewer componentPath={componentPath} />,
     },
-  ]
+  ];
 
-  const [selected, setSelected] = useState(tabs[0].name)
-  const [width, setWidth] = useState(0)
-  const [left, setLeft] = useState(0)
+  const [selected, setSelected] = useState(tabs[0].name);
+  const [width, setWidth] = useState(0);
+  const [left, setLeft] = useState(0);
 
   const tabRefs = useRef<{ [key: string]: React.RefObject<HTMLButtonElement> } >(
     tabs.reduce((acc, tab) => {
-      acc[tab.name] = React.createRef()
-      return acc
+      acc[tab.name] = React.createRef();
+      return acc;
     }, {} as { [key: string]: React.RefObject<HTMLButtonElement> }),
-  )
+  );
 
   useEffect(() => {
-    const currentTab = tabRefs.current[selected]?.current
+    const currentTab = tabRefs.current[selected]?.current;
     if (currentTab) {
-      setWidth(currentTab.offsetWidth)
-      setLeft(currentTab.offsetLeft)
+      setWidth(currentTab.offsetWidth);
+      setLeft(currentTab.offsetLeft);
     }
-  }, [selected])
+  }, [selected]);
 
   const handleTabClick = (tabName: string) => {
-    setSelected(tabName)
-  }
+    setSelected(tabName);
+  };
 
-  const selectedTab = tabs.find(tab => tab.name === selected)
+  const selectedTab = tabs.find(tab => tab.name === selected);
 
   return (
     <div className="flex flex-col items-center w-full">
@@ -145,7 +145,7 @@ function RnTab({
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export { RnTab }
+export { RnTab };

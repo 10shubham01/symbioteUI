@@ -1,5 +1,5 @@
-import { motion } from 'framer-motion'
-import React, { useState } from 'react'
+import { motion } from 'framer-motion';
+import React, { useState } from 'react';
 
 interface TimelineItem {
   heading: string
@@ -12,7 +12,7 @@ interface TimelineProps {
 }
 
 const Timeline: React.FC<TimelineProps> = ({ items }) => {
-  const [activeIndex, setActiveIndex] = useState(0)
+  const [activeIndex, setActiveIndex] = useState(0);
 
   return (
     <div>
@@ -99,7 +99,7 @@ const Timeline: React.FC<TimelineProps> = ({ items }) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Timeline
+export default Timeline;

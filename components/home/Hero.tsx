@@ -1,12 +1,12 @@
-import AnimatedText from '@/components/texts/hero-title'
-import TypeWriter from '@/components/texts/typewriter'
+import AnimatedText from '@/components/texts/hero-title';
+import TypeWriter from '@/components/texts/typewriter';
 
-import { motion } from 'framer-motion'
-import localFont from 'next/font/local'
-import Image from 'next/image'
-import Link from 'next/link'
+import { motion } from 'framer-motion';
+import localFont from 'next/font/local';
+import Image from 'next/image';
+import Link from 'next/link';
 
-const myFont = localFont({ src: '../../fonts/UltraSolar Normal.ttf' })
+const myFont = localFont({ src: '../../fonts/UltraSolar Normal.ttf' });
 
 export default function Hero() {
   return (
@@ -68,5 +68,5 @@ export default function Hero() {
         Get Started
       </Link>
     </div>
-  )
+  );
 }

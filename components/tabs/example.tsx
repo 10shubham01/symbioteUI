@@ -1,10 +1,10 @@
-import React from 'react'
-import { FaCar, FaPlane, FaTrain } from 'react-icons/fa'
-import Tab from './tab'
+import React from 'react';
+import { FaCar, FaPlane, FaTrain } from 'react-icons/fa';
+import Tab from './tab';
 
-const Train = () => <div>Train</div>
-const Plane = () => <div>Plane</div>
-const Car = () => <div>Car</div>
+const Train = () => <div>Train</div>;
+const Plane = () => <div>Plane</div>;
+const Car = () => <div>Car</div>;
 
 const tabs = [
   {
@@ -25,10 +25,10 @@ const tabs = [
     icon: <FaCar />,
     component: <Car />,
   },
-]
+];
 
 function Example() {
-  return <Tab items={tabs} />
+  return <Tab items={tabs} />;
 }
 
-export default Example
+export default Example;

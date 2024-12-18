@@ -1,8 +1,8 @@
-'use client'
+'use client';
 
-import { cn } from '@/lib/utils'
-import { motion, useAnimation, useInView } from 'framer-motion'
-import { useEffect, useRef } from 'react'
+import { cn } from '@/lib/utils';
+import { motion, useAnimation, useInView } from 'framer-motion';
+import { useEffect, useRef } from 'react';
 
 interface TextRevealProps {
   texts: string[]
@@ -19,22 +19,22 @@ export function TextReveal({
   duration,
   className,
 }: TextRevealProps) {
-  const mainControls = useAnimation()
-  const slideControls = useAnimation()
+  const mainControls = useAnimation();
+  const slideControls = useAnimation();
 
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true })
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
 
   useEffect(() => {
     if (isInView) {
-      slideControls.start('visible')
-      mainControls.start('visible')
+      slideControls.start('visible');
+      mainControls.start('visible');
     }
     else {
-      slideControls.start('hidden')
-      mainControls.start('hidden')
+      slideControls.start('hidden');
+      mainControls.start('hidden');
     }
-  }, [isInView, mainControls, slideControls])
+  }, [isInView, mainControls, slideControls]);
 
   return (
     <div
@@ -81,7 +81,7 @@ export function TextReveal({
         </div>
       ))}
     </div>
-  )
+  );
 }
 
-export default TextReveal
+export default TextReveal;

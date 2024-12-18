@@ -1,29 +1,29 @@
-'use client'
+'use client';
 
-import SkeletonLoader from '@/components/Theme/SkeletonLoader'
-import { CopyToClipboard } from 'nextra/components'
-import React, { useEffect, useState } from 'react'
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
-import vscDarkPlus from 'react-syntax-highlighter/dist/cjs/styles/prism/vsc-dark-plus'
-import { fetchSourceCode } from './getSourceCode'
+import SkeletonLoader from '@/components/Theme/SkeletonLoader';
+import { CopyToClipboard } from 'nextra/components';
+import React, { useEffect, useState } from 'react';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import vscDarkPlus from 'react-syntax-highlighter/dist/cjs/styles/prism/vsc-dark-plus';
+import { fetchSourceCode } from './getSourceCode';
 
 function SourceCodeViewer({ componentPath }: { componentPath: string }) {
-  const [sourceCode, setSourceCode] = useState('')
-  const [loading, setLoading] = useState(true)
+  const [sourceCode, setSourceCode] = useState('');
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetchSourceCode(componentPath)
       .then((code) => {
-        setSourceCode(code)
-        setLoading(false)
+        setSourceCode(code);
+        setLoading(false);
       })
       .catch((error) => {
-        console.error(error)
-        setLoading(false)
-      })
-  }, [componentPath])
+        console.error(error);
+        setLoading(false);
+      });
+  }, [componentPath]);
 
-  const getValue = () => sourceCode
+  const getValue = () => sourceCode;
 
   return (
     <pre className="relative h-[500px] overflow-y-auto custom-scrollbar p-0 m-0">
@@ -45,7 +45,7 @@ function SourceCodeViewer({ componentPath }: { componentPath: string }) {
             </div>
           )}
     </pre>
-  )
+  );
 }
 
-export default SourceCodeViewer
+export default SourceCodeViewer;
