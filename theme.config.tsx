@@ -1,5 +1,5 @@
-import type { DocsThemeConfig } from 'nextra-theme-docs'
-import React from 'react'
+import type { DocsThemeConfig } from 'nextra-theme-docs';
+import React from 'react';
 
 const config: DocsThemeConfig = {
   logo: (
@@ -24,6 +24,6 @@ const config: DocsThemeConfig = {
   footer: {
     text: 'Symbiote UI',
   },
-}
+};
 
-export default config
+export default config;

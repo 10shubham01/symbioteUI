@@ -1,5 +1,5 @@
-import React from 'react'
-import Timeline from './timeline'
+import React from 'react';
+import Timeline from './timeline';
 
 const Example: React.FC = () => {
   const timelineItems = [
@@ -33,13 +33,13 @@ const Example: React.FC = () => {
       description:
         'Venom plays a key role in defeating Knull, the dark god of the symbiotes, proving to be a powerful and unlikely hero.',
     },
-  ]
+  ];
 
   return (
     <div>
       <Timeline items={timelineItems} />
     </div>
-  )
-}
+  );
+};
 
-export default Example
+export default Example;

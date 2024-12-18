@@ -1,12 +1,12 @@
-import SourceCodeViewer from '@/utils/SourceCodeViewer' // Ensure this path is correct
-import { motion } from 'framer-motion'
-import React, { useEffect, useRef, useState } from 'react'
-import { CgWebsite } from 'react-icons/cg'
-import { FaCode } from 'react-icons/fa6'
-import { LuArrowUpRight } from 'react-icons/lu'
+import SourceCodeViewer from '@/utils/SourceCodeViewer'; // Ensure this path is correct
+import { motion } from 'framer-motion';
+import React, { useEffect, useRef, useState } from 'react';
+import { CgWebsite } from 'react-icons/cg';
+import { FaCode } from 'react-icons/fa6';
+import { LuArrowUpRight } from 'react-icons/lu';
 
 const TOGGLE_CLASSES
-  = 'text-sm font-medium flex items-center justify-center px-6 py-2 transition-colors relative z-10'
+  = 'text-sm font-medium flex items-center justify-center px-6 py-2 transition-colors relative z-10';
 
 interface ElementWrapperProps {
   type?: string
@@ -27,7 +27,7 @@ function CodeComponent({ componentPath }: CodeComponentProps) {
         <SourceCodeViewer componentPath={componentPath} />
       </div>
     </div>
-  )
+  );
 }
 
 function PreviewComponent({
@@ -42,7 +42,7 @@ function PreviewComponent({
       </div>
       {element}
     </div>
-  )
+  );
 }
 
 function ElementWrapper({
@@ -73,36 +73,36 @@ function ElementWrapper({
           icon: <FaCode />,
           component: <CodeComponent componentPath={componentPath} />,
         },
-      ]
+      ];
 
-  const [selected, setSelected] = useState(tabs[0].name)
-  const [width, setWidth] = useState(0)
-  const [left, setLeft] = useState(0)
+  const [selected, setSelected] = useState(tabs[0].name);
+  const [width, setWidth] = useState(0);
+  const [left, setLeft] = useState(0);
 
   const tabRefs = useRef<{ [key: string]: React.RefObject<HTMLButtonElement> } >(
     tabs.reduce((acc, tab) => {
-      acc[tab.name] = React.createRef()
-      return acc
+      acc[tab.name] = React.createRef();
+      return acc;
     }, {} as { [key: string]: React.RefObject<HTMLButtonElement> }),
-  )
+  );
 
   useEffect(() => {
-    const currentTab = tabRefs.current[selected]?.current
+    const currentTab = tabRefs.current[selected]?.current;
     if (currentTab) {
-      setWidth(currentTab.offsetWidth)
-      setLeft(currentTab.offsetLeft)
+      setWidth(currentTab.offsetWidth);
+      setLeft(currentTab.offsetLeft);
     }
-  }, [selected])
+  }, [selected]);
 
   const handleTabClick = (tabName: string) => {
-    setSelected(tabName)
-  }
+    setSelected(tabName);
+  };
 
   const handleLinkClick = () => {
-    window.open(`/preview/${previewLink}`, '_blank')
-  }
+    window.open(`/preview/${previewLink}`, '_blank');
+  };
 
-  const selectedTab = tabs.find(tab => tab.name === selected)
+  const selectedTab = tabs.find(tab => tab.name === selected);
 
   return (
     <div className="flex flex-col items-left">
@@ -149,11 +149,11 @@ function ElementWrapper({
 
       <div className="mt-4  w-full">{selectedTab?.component}</div>
     </div>
-  )
+  );
 }
 
 interface CodeComponentProps {
   componentPath: string
 }
 
-export default ElementWrapper
+export default ElementWrapper;

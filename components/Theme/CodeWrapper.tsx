@@ -1,5 +1,5 @@
-import SourceCodeViewer from '@/utils/SourceCodeViewer'
-import React from 'react'
+import SourceCodeViewer from '@/utils/SourceCodeViewer';
+import React from 'react';
 
 interface CodeComponentProps {
   codePath: string
@@ -16,6 +16,6 @@ const CodeWrapper: React.FC<CodeComponentProps> = ({ codePath }) => (
       <SourceCodeViewer componentPath={codePath} />
     </div>
   </div>
-)
+);
 
-export default CodeWrapper
+export default CodeWrapper;
